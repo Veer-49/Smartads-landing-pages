@@ -1,86 +1,67 @@
 # SmartAds Landing Pages Hub
 
-This is a navigation hub for 7 different advertising landing page projects.
+This is a navigation hub for 7 different advertising landing page projects, configured for single-domain deployment with subdirectories.
 
 ## Projects
 
-1. **Cinema Spotlight** - Theater advertising solutions (Port 3001)
-2. **Magazine Mastery** - Print and digital magazine advertising (Port 3002)
-3. **Newsy Lead Forge** - News and media advertising (Port 3003)
-4. **OTT Ad Hub** - Over-the-top streaming platform advertising (Port 3004)
-5. **Radio Connect Hub** - Radio broadcasting advertising (Port 3005)
-6. **Sky High Ads** - Elevated advertising solutions (Port 3006)
-7. **Sky High Reach** - Extended reach advertising (Port 3007)
+1. **Cinema Spotlight** - Theater advertising solutions (`/cinema-spotlight`)
+2. **Magazine Mastery** - Print and digital magazine advertising (`/magazine-mastery`)
+3. **Newsy Lead Forge** - News and media advertising (`/newsy-lead-forge`)
+4. **OTT Ad Hub** - Over-the-top streaming platform advertising (`/ott-ad-hub`)
+5. **Radio Connect Hub** - Radio broadcasting advertising (`/radio-connect-hub`)
+6. **Sky High Ads** - Elevated advertising solutions (`/sky-high-ads`)
+7. **Sky High Reach** - Extended reach advertising (`/sky-high-reach`)
 
 ## Quick Start
 
-### Option 1: Start All Projects at Once
+### Local Development
 
-Run the batch script to start all 7 projects simultaneously:
-
+**Start All Projects at Once:**
 ```bash
 start-all.bat
 ```
 
-This will open 7 separate terminal windows, each running one of the projects on its designated port.
-
-### Option 2: Start Projects Individually
-
-Navigate to each project folder and run:
-
+**Start Projects Individually:**
 ```bash
 cd cinema-spotlight-main
 npm run dev
 ```
 
-Repeat for each project with their respective folders.
+**Access Navigation Hub:**
+- Local: Open `index-local.html` in your browser
+- Production: Deployed at your domain root
 
-## Access the Navigation Hub
+## Production Deployment
 
-Once the projects are running, open `index.html` in your browser. This will show you a beautiful navigation page with cards for each project. Click on any card to open that landing page.
-
-## Port Configuration
-
-Each project is configured to run on a different port to avoid conflicts:
-
-- Cinema Spotlight: `http://localhost:3001`
-- Magazine Mastery: `http://localhost:3002`
-- Newsy Lead Forge: `http://localhost:3003`
-- OTT Ad Hub: `http://localhost:3004`
-- Radio Connect Hub: `http://localhost:3005`
-- Sky High Ads: `http://localhost:3006`
-- Sky High Reach: `http://localhost:3007`
-
-## Deployment
-
-### Deploy to Vercel
-
-**Quick Deployment:**
-```bash
-npm install -g vercel
-vercel
-```
-
-**Individual Project Deployment:**
-```bash
-cd cinema-spotlight-main
-vercel
-```
-
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
-
-### Build for Production
+### Single Domain Deployment (Current Setup)
 
 **Build All Projects:**
 ```bash
-build-all.bat
+node build-all.js
 ```
 
-**Build Individual Project:**
+**Deploy to Vercel:**
 ```bash
-cd cinema-spotlight-main
-npm run build
+vercel --prod
 ```
+
+This will create:
+- `yourdomain.com/` - Navigation hub
+- `yourdomain.com/cinema-spotlight` - Cinema landing page
+- `yourdomain.com/magazine-mastery` - Magazine landing page
+- etc.
+
+## Folder Structure
+
+**Source Projects:**
+- `cinema-spotlight-main/` - Source code
+- `magazine-mastery-main/` - Source code
+- etc.
+
+**Built Subdirectories (created by build-all.js):**
+- `cinema-spotlight/` - Built files for deployment
+- `magazine-mastery/` - Built files for deployment
+- etc.
 
 ## Technologies Used
 
@@ -92,8 +73,7 @@ npm run build
 
 ## Notes
 
-- Make sure you have Node.js installed on your system
-- Run `npm install` in each project folder if you haven't already
-- The navigation hub (`index.html`) is a static HTML file that can be opened directly in a browser
-- Each project will open in a new browser tab when clicked from the navigation hub
-- All projects are configured for Vercel deployment with proper build settings
+- All projects are deployed on a single domain with subdirectories
+- Use `index-local.html` for local development
+- Use `index.html` for production
+- The build script automatically creates the proper folder structure

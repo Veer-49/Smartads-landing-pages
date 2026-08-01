@@ -1,0 +1,16 @@
+# Source project folders (don't deploy source code)
+cinema-spotlight-main/
+magazine-mastery-main/
+newsy-lead-forge-main/
+ott-ad-hub-main/
+radio-connect-hub-main/
+sky-high-ads-main/
+sky-high-reach-main/
+
+# Development files
+index-local.html
+build-all.bat
+install-all.bat
+start-all.bat
+DEPLOYMENT.md
+MULTI-DOMAIN-GUIDE.md
