@@ -1,0 +1,267 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * SmartAds — Radio advertising agency design system.
+ * Aesthetic: analog FM dial. Deep bakelite charcoal, glowing amber dial light,
+ * signal-teal secondary. Condensed display type over industrial body type.
+ */
+
+@theme {
+  --font-display: "Bebas Neue", ui-sans-serif, system-ui;
+  --font-body: "Barlow", ui-sans-serif, system-ui;
+  --font-dial: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-signal: var(--signal);
+  --color-signal-foreground: var(--signal-foreground);
+  --color-glow: var(--glow);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  --background: oklch(0.16 0.012 60);
+  --foreground: oklch(0.95 0.012 85);
+
+  --surface: oklch(0.21 0.014 62);
+  --surface-2: oklch(0.26 0.018 62);
+
+  --card: oklch(0.21 0.014 62);
+  --card-foreground: oklch(0.95 0.012 85);
+  --popover: oklch(0.21 0.014 62);
+  --popover-foreground: oklch(0.95 0.012 85);
+
+  /* dial amber */
+  --primary: oklch(0.79 0.163 68);
+  --primary-foreground: oklch(0.18 0.02 60);
+  --glow: oklch(0.86 0.14 82);
+
+  /* signal teal */
+  --signal: oklch(0.72 0.11 195);
+  --signal-foreground: oklch(0.16 0.012 60);
+
+  --secondary: oklch(0.26 0.018 62);
+  --secondary-foreground: oklch(0.95 0.012 85);
+  --muted: oklch(0.26 0.018 62);
+  --muted-foreground: oklch(0.7 0.018 75);
+  --accent: oklch(0.3 0.03 62);
+  --accent-foreground: oklch(0.95 0.012 85);
+  --destructive: oklch(0.62 0.2 27);
+  --destructive-foreground: oklch(0.98 0.01 85);
+  --border: oklch(0.32 0.02 62);
+  --input: oklch(0.3 0.02 62);
+  --ring: oklch(0.79 0.163 68);
+
+  --gradient-dial: linear-gradient(
+    180deg,
+    oklch(0.26 0.018 62) 0%,
+    oklch(0.18 0.014 60) 100%
+  );
+  --gradient-amber: linear-gradient(
+    100deg,
+    oklch(0.79 0.163 68),
+    oklch(0.88 0.15 88)
+  );
+  --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--primary) 35%, transparent),
+    0 18px 60px -22px color-mix(in oklab, var(--primary) 60%, transparent);
+  --shadow-panel: 0 30px 80px -40px oklch(0 0 0 / 0.9);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  .display {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+    line-height: 0.92;
+  }
+}
+
+@utility dial-grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image: repeating-linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--primary) 12%, transparent) 0 1px,
+      transparent 1px 6px
+    );
+    mask-image: linear-gradient(180deg, transparent, #000 40%, transparent);
+  }
+}
+
+@utility text-glow {
+  text-shadow: 0 0 22px color-mix(in oklab, var(--glow) 55%, transparent);
+}
+
+@utility panel {
+  background: var(--gradient-dial);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-panel);
+}
+
+@utility btn-amber {
+  background: var(--gradient-amber);
+  color: var(--primary-foreground);
+  box-shadow: var(--shadow-glow);
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease;
+  &:hover {
+    filter: brightness(1.08);
+    transform: translateY(-2px);
+  }
+}
+
+@utility marquee-track {
+  animation: marquee 38s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: scaleY(0.25);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@utility eq-bar {
+  animation: wave 1s ease-in-out infinite;
+  transform-origin: bottom;
+}
+
+/* ---------- scroll reveal + polish animations ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@utility float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+@keyframes sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+@utility sheen {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30%;
+    background: linear-gradient(
+      100deg,
+      transparent,
+      color-mix(in oklab, var(--glow) 22%, transparent),
+      transparent
+    );
+    animation: sweep 5.5s ease-in-out infinite;
+  }
+}
