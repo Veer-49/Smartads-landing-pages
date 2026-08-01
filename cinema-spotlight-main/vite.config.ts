@@ -12,21 +12,4 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
-  vite: {
-    server: {
-      port: 3001,
-      strictPort: true,
-    },
-    build: {
-      rollupOptions: {
-        onwarn(warning, warn) {
-          // Ignore "externalizing" warnings for lucide-react
-          if (warning.code === 'UNRESOLVED_IMPORT' && warning.message.includes('lucide-react')) {
-            return;
-          }
-          warn(warning);
-        },
-      },
-    },
-  },
 });

@@ -6,10 +6,8 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "build:static": "vite build --mode static",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
-    "preview:static": "vite preview --mode static",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
