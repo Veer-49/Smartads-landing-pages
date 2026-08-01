@@ -29,6 +29,36 @@
         .card-gradient-5 { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
         .card-gradient-6 { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
         .card-gradient-7 { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); }
+        .iframe-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            background: white;
+        }
+        .iframe-container.active {
+            display: block;
+        }
+        .close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .close-btn:hover {
+            background: #dc2626;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gray-50">
@@ -46,7 +76,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
             <!-- Cinema Spotlight -->
-            <a href="/cinema-spotlight" class="block">
+            <a href="#" data-page="http://localhost:3001" class="block">
                 <div class="card-hover card-gradient-1 rounded-2xl p-8 text-white h-full min-h-[200px] flex flex-col justify-center">
                     <div class="flex items-center mb-4">
                         <svg class="w-12 h-12 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -56,13 +86,13 @@
                     </div>
                     <p class="text-white/90">Theater advertising solutions for maximum audience engagement</p>
                     <div class="mt-4 flex items-center text-sm opacity-75">
-                        <span class="bg-white/20 px-3 py-1 rounded-full">/cinema-spotlight</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full">localhost:3001</span>
                     </div>
                 </div>
             </a>
 
             <!-- Magazine Mastery -->
-            <a href="/magazine-mastery" class="block">
+            <a href="#" data-page="http://localhost:3002" class="block">
                 <div class="card-hover card-gradient-2 rounded-2xl p-8 text-white h-full min-h-[200px] flex flex-col justify-center">
                     <div class="flex items-center mb-4">
                         <svg class="w-12 h-12 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -72,13 +102,13 @@
                     </div>
                     <p class="text-white/90">Print and digital magazine advertising excellence</p>
                     <div class="mt-4 flex items-center text-sm opacity-75">
-                        <span class="bg-white/20 px-3 py-1 rounded-full">/magazine-mastery</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full">localhost:3002</span>
                     </div>
                 </div>
             </a>
 
             <!-- Newsy Lead Forge -->
-            <a href="/newsy-lead-forge" class="block">
+            <a href="#" data-page="http://localhost:3003" class="block">
                 <div class="card-hover card-gradient-3 rounded-2xl p-8 text-white h-full min-h-[200px] flex flex-col justify-center">
                     <div class="flex items-center mb-4">
                         <svg class="w-12 h-12 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -88,13 +118,13 @@
                     </div>
                     <p class="text-white/90">News and media advertising for lead generation</p>
                     <div class="mt-4 flex items-center text-sm opacity-75">
-                        <span class="bg-white/20 px-3 py-1 rounded-full">/newsy-lead-forge</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full">localhost:3003</span>
                     </div>
                 </div>
             </a>
 
             <!-- OTT Ad Hub -->
-            <a href="/ott-ad-hub" class="block">
+            <a href="#" data-page="http://localhost:3004" class="block">
                 <div class="card-hover card-gradient-4 rounded-2xl p-8 text-white h-full min-h-[200px] flex flex-col justify-center">
                     <div class="flex items-center mb-4">
                         <svg class="w-12 h-12 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -104,13 +134,13 @@
                     </div>
                     <p class="text-white/90">Over-the-top streaming platform advertising solutions</p>
                     <div class="mt-4 flex items-center text-sm opacity-75">
-                        <span class="bg-white/20 px-3 py-1 rounded-full">/ott-ad-hub</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full">localhost:3004</span>
                     </div>
                 </div>
             </a>
 
             <!-- Radio Connect Hub -->
-            <a href="/radio-connect-hub" class="block">
+            <a href="#" data-page="http://localhost:3005" class="block">
                 <div class="card-hover card-gradient-5 rounded-2xl p-8 text-white h-full min-h-[200px] flex flex-col justify-center">
                     <div class="flex items-center mb-4">
                         <svg class="w-12 h-12 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -120,13 +150,13 @@
                     </div>
                     <p class="text-white/90">Radio broadcasting advertising for audio engagement</p>
                     <div class="mt-4 flex items-center text-sm opacity-75">
-                        <span class="bg-white/20 px-3 py-1 rounded-full">/radio-connect-hub</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full">localhost:3005</span>
                     </div>
                 </div>
             </a>
 
             <!-- Sky High Ads -->
-            <a href="/sky-high-ads" class="block">
+            <a href="#" data-page="http://localhost:3006" class="block">
                 <div class="card-hover card-gradient-6 rounded-2xl p-8 text-white h-full min-h-[200px] flex flex-col justify-center">
                     <div class="flex items-center mb-4">
                         <svg class="w-12 h-12 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -136,13 +166,13 @@
                     </div>
                     <p class="text-white/90">Elevated advertising solutions for maximum impact</p>
                     <div class="mt-4 flex items-center text-sm opacity-75">
-                        <span class="bg-white/20 px-3 py-1 rounded-full">/sky-high-ads</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full">localhost:3006</span>
                     </div>
                 </div>
             </a>
 
             <!-- Sky High Reach -->
-            <a href="/sky-high-reach" class="block">
+            <a href="#" data-page="http://localhost:3007" class="block">
                 <div class="card-hover card-gradient-7 rounded-2xl p-8 text-white h-full min-h-[200px] flex flex-col justify-center">
                     <div class="flex items-center mb-4">
                         <svg class="w-12 h-12 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -152,7 +182,7 @@
                     </div>
                     <p class="text-white/90">Extended reach advertising for broader audience</p>
                     <div class="mt-4 flex items-center text-sm opacity-75">
-                        <span class="bg-white/20 px-3 py-1 rounded-full">/sky-high-reach</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full">localhost:3007</span>
                     </div>
                 </div>
             </a>
@@ -185,5 +215,41 @@
             <p class="text-gray-400">© 2026 SmartAds Landing Pages. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Iframe Container for Landing Pages -->
+    <div id="iframe-container" class="iframe-container">
+        <button class="close-btn" onclick="closeIframe()">✕ Close</button>
+        <iframe id="landing-page-iframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+    </div>
+
+    <script>
+        function openLandingPage(page) {
+            const iframe = document.getElementById('landing-page-iframe');
+            const container = document.getElementById('iframe-container');
+            
+            iframe.src = page;
+            container.classList.add('active');
+        }
+
+        function closeIframe() {
+            const container = document.getElementById('iframe-container');
+            const iframe = document.getElementById('landing-page-iframe');
+            
+            container.classList.remove('active');
+            iframe.src = '';
+        }
+
+        // Update all cards to use the iframe approach
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('[data-page]');
+            cards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const page = this.getAttribute('data-page');
+                    openLandingPage(page);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
